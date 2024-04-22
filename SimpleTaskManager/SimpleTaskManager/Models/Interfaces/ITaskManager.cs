@@ -8,6 +8,8 @@ namespace SimpleTaskManager.Models.Interfaces
 {
     public interface ITaskManager
     {
+        IReadOnlyCollection<CustomTask> GetAll();
+
         void Add(CustomTask task);
 
         void Display();

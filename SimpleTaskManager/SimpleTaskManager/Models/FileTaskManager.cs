@@ -50,6 +50,9 @@ namespace SimpleTaskManager.Models
             }
         }
 
+        public IReadOnlyCollection<CustomTask> GetAll()
+            => tasks;
+
         public void MarkTaskAsCompleted(int taskId)
         {
             CustomTask task = tasks.FirstOrDefault(t => t.Id == taskId);
@@ -67,7 +70,7 @@ namespace SimpleTaskManager.Models
 
         private void CreateFileTaskManagerFile(string filePath)
         {
-            // If the file exist we will use it, if not will create new one
+            // If the file exist will use it, if not will create new one
 
             if (File.Exists(filePath))
             {
@@ -82,6 +85,8 @@ namespace SimpleTaskManager.Models
 
         private void SaveTasksToFile()
         {
+            File.Delete(this.filePath);
+
             foreach (CustomTask task in tasks)
             {
                 File.AppendAllText(filePath, task.ToString() + Environment.NewLine);
