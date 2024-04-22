@@ -21,6 +21,13 @@ namespace SimpleTaskManager.Models
             isCompleted = false;
         }
 
+        public CustomTask(int id, string discription, bool isCompleted)
+        {
+            Id = id;
+            Discription = discription;
+            this.isCompleted = isCompleted;
+        }
+
         public int Id
         {
             get => id; 

@@ -17,7 +17,9 @@ namespace SimpleTaskManager.Models
         {
             tasks = new List<CustomTask>();
 
-            CreateFileTaskManagerFile(filePath);
+            this.filePath = filePath;
+
+            LoadTasksFromFile();
         }
 
         public void Add(CustomTask task)
@@ -68,28 +70,45 @@ namespace SimpleTaskManager.Models
             }
         }
 
-        private void CreateFileTaskManagerFile(string filePath)
+        private void LoadTasksFromFile()
         {
-            // If the file exist will use it, if not will create new one
 
             if (File.Exists(filePath))
             {
-                this.filePath = filePath;
-            }
-            else
-            {
-                File.Create(filePath).Close();
-                this.filePath = filePath;
+                string[] lines = File.ReadAllLines(filePath);
+
+                foreach (string line in lines)
+                {
+                    string[] parts = line
+                        .Split(new[] { " - " }, StringSplitOptions.None);
+
+                    int id = int.Parse(parts[0]
+                        .Split(':').Last()
+                        .Trim());
+
+                    string description = parts[1]
+                        .Split(':')
+                        .Last()
+                        .Trim();
+
+                    bool isCompleted = parts[2]
+                        .Split(':')
+                        .Last()
+                        .Trim() == "Completed";
+
+                    tasks.Add(new CustomTask(id, description, isCompleted));
+                }
             }
         }
 
         private void SaveTasksToFile()
         {
-            File.Delete(this.filePath);
-
-            foreach (CustomTask task in tasks)
+            using (StreamWriter writer = new StreamWriter(filePath))
             {
-                File.AppendAllText(filePath, task.ToString() + Environment.NewLine);
+                foreach (CustomTask task in tasks)
+                {
+                    writer.WriteLine(task.ToString());
+                }
             }
         }
     }
