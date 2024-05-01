@@ -9,4 +9,4 @@ In the future when I upgrade my knowledges i will try to upgrade the project usi
 
 To start the app just run the code on your Visual Studio and use the commands Add (to add new task), Delete (ID should be an integer, to delete this task), Display (to see all tasks you have created on the console), Complete (ID should be an integer, to change the status of the task from Not completed to Completed). 
 
-This is simple review how the app could bew use:
+This is simple review how the app could be use:
