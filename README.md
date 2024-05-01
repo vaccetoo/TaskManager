@@ -1,6 +1,6 @@
 TaskManager
 
-The main idea behind this project is exercising waht i have learend in my C# OOP courese.
+The main idea behind this project is exercising waht i have learend in my C# OOP course.
 
 I have created simple Console App which provides you to easily Add, Delete and Complete new Tasks using this three simple commands on the console.
 I wanted to challenge myself thats why i created Data base which is txt. file where the data is stored and every time you run the application the information from that file is loaded and ready to be use.
