@@ -1,8 +1,12 @@
-# TaskManager
-This is basic project of Task Manager ConsoleApp using the File system for Data base.
+TaskManager
 
-The Task itself is presented like CustomTask class which inherits the ITask interface, containing the following behavior:
-![Screenshot 2024-04-22 230228](https://github.com/vaccetoo/TaskManager/assets/143093448/f5211b92-600b-40b3-9b92-ef0f3b862da7)
+The main idea behind this project is exercising waht i have learend in my C# OOP courese.
 
-The TaskManager which i am calling FileTaskManager int this project is represented with the following behavior:
-![Screenshot 2024-04-22 231023](https://github.com/vaccetoo/TaskManager/assets/143093448/4cc3ed72-c5b3-49ee-83e5-68ffd1ca935b)
+I have created simple Console App which provides you to easily Add, Delete and Complete new Tasks using this three simple commands on the console.
+I wanted to challenge myself thats why i created Data base which is txt. file where the data is stored and every time you run the application the information from that file is loaded and ready to be use.
+
+In the future when I upgrade my knowledges i will try to upgrade the project using the all new futures i have been learned.
+
+To start the app just run the code on your Visual Studio and use the commands Add (to add new task), Delete (ID should be an integer, to delete this task), Display (to see all tasks you have created on the console), Complete (ID should be an integer, to change the status of the task from Not completed to Completed). 
+
+This is simple review how the app could bew use:
