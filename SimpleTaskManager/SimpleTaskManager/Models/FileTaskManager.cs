@@ -29,7 +29,7 @@ namespace SimpleTaskManager.Models
             SaveTasksToFile();
         }
 
-        public void Delete(int taskId)
+        public string Delete(int taskId)
         {
             CustomTask task = tasks.FirstOrDefault(t => t.Id == taskId);
 
@@ -37,10 +37,12 @@ namespace SimpleTaskManager.Models
             {
                 tasks.Remove(task);
                 SaveTasksToFile();
+
+                return $"Task {taskId} has been successfully deleted !";
             }
             else
             {
-                Console.WriteLine("Task not faund !");
+                return $"Task {taskId} not faund !";
             }
         }
 
@@ -55,7 +57,7 @@ namespace SimpleTaskManager.Models
         public IReadOnlyCollection<CustomTask> GetAll()
             => tasks;
 
-        public void MarkTaskAsCompleted(int taskId)
+        public string MarkTaskAsCompleted(int taskId)
         {
             CustomTask task = tasks.FirstOrDefault(t => t.Id == taskId);
 
@@ -63,10 +65,12 @@ namespace SimpleTaskManager.Models
             {
                 task.Complete();
                 SaveTasksToFile();
+
+                return $"Task {taskId} has been completed !";
             }
             else
             {
-                Console.WriteLine("Task not faund !");
+                return $"Task {taskId} not faund !";
             }
         }
 

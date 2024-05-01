@@ -12,6 +12,7 @@ namespace SimpleTaskManager.Core
     public class Controller : IController
     {
         private ITaskManager fileTaskManager;
+
         public Controller(ITaskManager fileTaskManager)
         {
 
@@ -26,6 +27,26 @@ namespace SimpleTaskManager.Core
             fileTaskManager.Add(task);
 
             return $"Task {id} - {discription} added successfully !";
+        }
+
+        public string DeleteTask(int id)
+        {
+            return fileTaskManager.Delete(id);
+        }
+
+        public void DisplayTasks()
+        {
+            fileTaskManager.Display();
+        }
+
+        public string CompleteTask(int taskId)
+        {
+           return fileTaskManager.MarkTaskAsCompleted(taskId);
+        }
+
+        public void CloseApp()
+        {
+            Environment.Exit(0);
         }
     }
 }

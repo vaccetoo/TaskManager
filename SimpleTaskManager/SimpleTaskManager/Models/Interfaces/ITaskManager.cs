@@ -14,8 +14,8 @@ namespace SimpleTaskManager.Models.Interfaces
 
         void Display();
 
-        void MarkTaskAsCompleted(int taskId);
+        string MarkTaskAsCompleted(int taskId);
 
-        void Delete(int taskId);
+        string Delete(int taskId);
     }
 }

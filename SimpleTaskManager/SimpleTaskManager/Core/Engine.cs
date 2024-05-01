@@ -27,7 +27,7 @@ namespace SimpleTaskManager.Core
         public void Run()
         {
             // Possible commands will be:
-            // Add, Delete, Display, Complete 
+            // Add, Delete, Display, Complete, End
 
             Console.WriteLine(WelcomeMessage);
 
@@ -40,11 +40,12 @@ namespace SimpleTaskManager.Core
                     string[] commandInfo = command
                     .Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
-                    string commandType = commandInfo[0];
+                    string commandName = commandInfo[0];
+
                     string result = string.Empty;
 
-                    // Add Command:
-                    if (commandType == "Add")
+                    // Add:
+                    if (commandName == "Add")
                     {
                         string[] taskDiscription = commandInfo
                             .Skip(1)
@@ -55,10 +56,32 @@ namespace SimpleTaskManager.Core
 
                         result = controller.AddTask(taskId, discription);
                     }
+                    // Delete:
+                    else if (commandName == "Delete")
+                    {
+                        int taskId = int.Parse(commandInfo[1]);
+
+                        result = controller.DeleteTask(taskId);
+                    }
+                    // Display:
+                    else if (commandName == "Display")
+                    {
+                        controller.DisplayTasks();
+                    }
+                    // Complete:
+                    else if (commandName == "Complete")
+                    {
+                        int taskId = int.Parse(commandInfo[1]);
+
+                        result = controller.CompleteTask(taskId);
+                    }
+                    // End:
+                    else if (commandName == EndCommand)
+                    {
+                        controller.CloseApp();
+                    }
 
                     Console.WriteLine(result);
-
-                    // TODO: End command => Enviroment.Exit(0);
                 }
                 catch (Exception ex)
                 {
