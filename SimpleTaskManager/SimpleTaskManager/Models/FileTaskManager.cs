@@ -48,7 +48,7 @@ namespace SimpleTaskManager.Models
 
         public void Display()
         {
-            foreach (CustomTask task in tasks)
+            foreach (CustomTask task in tasks.OrderBy(x => x.Id))
             {
                 Console.WriteLine(task);
             }

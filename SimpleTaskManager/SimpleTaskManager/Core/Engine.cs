@@ -54,6 +54,21 @@ namespace SimpleTaskManager.Core
                         string discription = string.Join(" ", taskDiscription);
                         int taskId = taskManager.GetAll().Count + 1;
 
+                        ITask[] tasks = taskManager.GetAll().OrderBy(x => x.Id).ToArray();
+
+                        // Do not dublicate Id's
+                        if (tasks.Any(x => x.Id == taskId))
+                        {
+                            for (int i = 0; i < taskManager.GetAll().Count; i++)
+                            {
+                                if (tasks[i].Id != i + 1)
+                                {
+                                    taskId = tasks[i].Id - 1;
+                                    break;
+                                }
+                            }
+                        }
+
                         result = controller.AddTask(taskId, discription);
                     }
                     // Delete:
