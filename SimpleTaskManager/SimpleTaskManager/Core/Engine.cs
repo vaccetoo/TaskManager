@@ -17,6 +17,7 @@ namespace SimpleTaskManager.Core
 
         private const string WelcomeMessage = "WELCOME TO -=TASK MANAGER=-";
         private const string EndCommand = "End";
+        private const string WrongCommand = "Incorrect command !";
 
         public Engine()
         {
@@ -94,6 +95,10 @@ namespace SimpleTaskManager.Core
                     else if (commandName == EndCommand)
                     {
                         controller.CloseApp();
+                    }
+                    else
+                    {
+                        result = WrongCommand;
                     }
 
                     Console.WriteLine(result);
